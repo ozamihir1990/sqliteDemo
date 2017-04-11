@@ -48,7 +48,9 @@ sqlite3_stmt* sqlite3Statement;
 
 - (void) SaveImagesToSql: (NSData*) imgData  {
     
-    NSString *databasePath = [[NSBundle mainBundle] pathForResource:@"informationdb" ofType:@"sql"];
+    directoryPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    documentsDirectory = [directoryPaths objectAtIndex:0];
+    NSString * databasePath = [[NSString alloc]initWithString:[documentsDirectory stringByAppendingPathComponent:@"informationdb.sql"]];
     
     const char* sqlite3Query = "INSERT INTO PICTURES (PHOTO) VALUES (?)";
     int openDatabaseResult = sqlite3_open_v2([databasePath UTF8String], &sqlite3DatabaseObject, SQLITE_OPEN_READWRITE , NULL);
