@@ -65,7 +65,6 @@ sqlite3_stmt* sqlite3Statement;
             NSLog(@"Error is: %s", sqlite3_errmsg(sqlite3DatabaseObject));
         }
         sqlite3_finalize(sqlite3Statement);
-        
     }
     else NSLog( @"Error is:  %s", sqlite3_errmsg(sqlite3DatabaseObject) );
     sqlite3_close(sqlite3DatabaseObject);
